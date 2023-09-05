@@ -17,6 +17,7 @@ class Webservice: WebserviceProtocol {
     func cityWeatherReport(city: String,
                            completionHandler: @escaping (QueryError?, WeatherReporterResponseModel?) -> ()) {
         let endPoint = WeatherApiQueryEndPoint.cityWeatherReport(city: city).endPoint
+        print("End point = ", endPoint)
         WebserviceApiClient.fetchRemoteData(from: endPoint) { error, data in
             if let error = error {
                 completionHandler(error, nil)
@@ -26,6 +27,7 @@ class Webservice: WebserviceProtocol {
                     let cityWeatherInfoResponse = try JSONDecoder().decode(WeatherReporterResponseModel.self, from: data)
                     completionHandler(nil, cityWeatherInfoResponse)
                 } catch {
+                    dump(error)
                     completionHandler(.jsonParse, nil)
                 }
             }
@@ -38,6 +40,7 @@ final class WebserviceApiClient {
     
     static func fetchRemoteData(from endPoint: String, completionHandler: @escaping(QueryError?, Data?) -> ()) {
         guard let endPointURL = URL(string: endPoint) else { return }
+        print("endPointURL = ", endPoint)
         let urlRequest = URLRequest(url: endPointURL)
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (responseData, response, error) in
             if let error = error {

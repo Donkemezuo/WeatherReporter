@@ -12,13 +12,13 @@ struct WeatherReporterResponseModel: Codable {
     var weather: [WeatherReport]
     var temperatureInfo: WeatherTemperatureDetails
     var windInfo: WindInfo
-    var additionalInfo: AdditionalInfo
+   /// var additionalInfo: AdditionalInfo
     
     private enum CodingKeys: String, CodingKey {
         case coordinates = "coord"
         case temperatureInfo = "main"
         case windInfo = "wind"
-        case additionalInfo = "sys"
+       /// case additionalInfo = "sys"
         case weather
     }
     
@@ -68,7 +68,13 @@ struct WindInfo: Codable {
     }
 }
 
-struct AdditionalInfo: Codable {
-    var sunrise: String
-    var sunset: String
-}
+//struct AdditionalInfo: Codable {
+//    var sunrise: NSNumber?
+//    var sunset: NSNumber?
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        self.sunrise = aDecoder.decodeObject(forKey: "sunrise") as? NSNumber?
+//        self.sunset = aDecoder.decodeObject(forKey: "sunset") as? NSNumber?
+//        super.init()
+//    }
+//}
