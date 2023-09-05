@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
 
     private func fetchData() {
-        dataManager.fetchCityWeatherReport(city: "Wichita") { error, responseData in
+        dataManager.fetchCityWeatherReport(city: "New York") { error, responseData in
             if let error = error {
                 print(error)
             } else if let responseData = responseData {

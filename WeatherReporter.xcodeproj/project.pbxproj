@@ -18,6 +18,7 @@
 		F0BD39272AA7DBCE0040C442 /* QueryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39262AA7DBCE0040C442 /* QueryError.swift */; };
 		F0BD392A2AA7DC290040C442 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39292AA7DC290040C442 /* Webservice.swift */; };
 		F0BD392C2AA7E1E40040C442 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD392B2AA7E1E40040C442 /* DataManager.swift */; };
+		F0BD392F2AA7E7FD0040C442 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD392E2AA7E7FD0040C442 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F0BD39262AA7DBCE0040C442 /* QueryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryError.swift; sourceTree = "<group>"; };
 		F0BD39292AA7DC290040C442 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		F0BD392B2AA7E1E40040C442 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		F0BD392E2AA7E7FD0040C442 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		F0BD39252AA7DBB60040C442 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				F0BD392D2AA7E7E90040C442 /* Extensions */,
 				F0BD39262AA7DBCE0040C442 /* QueryError.swift */,
 			);
 			path = SupportingFiles;
@@ -128,6 +131,14 @@
 				F0BD392B2AA7E1E40040C442 /* DataManager.swift */,
 			);
 			path = Webservices;
+			sourceTree = "<group>";
+		};
+		F0BD392D2AA7E7E90040C442 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F0BD392E2AA7E7FD0040C442 /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				F0BD392C2AA7E1E40040C442 /* DataManager.swift in Sources */,
 				F0BD392A2AA7DC290040C442 /* Webservice.swift in Sources */,
 				F0BD39272AA7DBCE0040C442 /* QueryError.swift in Sources */,
+				F0BD392F2AA7E7FD0040C442 /* String+Extensions.swift in Sources */,
 				F0BD390A2AA7C9430040C442 /* AppDelegate.swift in Sources */,
 				F0BD39202AA7D4040040C442 /* WeatherReporterResponseModel.swift in Sources */,
 				F0BD39242AA7DB310040C442 /* WebserviceProtocol.swift in Sources */,

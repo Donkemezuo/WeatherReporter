@@ -16,8 +16,7 @@ class Webservice: WebserviceProtocol {
     
     func cityWeatherReport(city: String,
                            completionHandler: @escaping (QueryError?, WeatherReporterResponseModel?) -> ()) {
-        let endPoint = WeatherApiQueryEndPoint.cityWeatherReport(city: city).endPoint
-        print("End point = ", endPoint)
+        let endPoint = WeatherApiQueryEndPoint.cityWeatherReport(city: city).endPoint.replaceSpaceCharacters()
         WebserviceApiClient.fetchRemoteData(from: endPoint) { error, data in
             if let error = error {
                 completionHandler(error, nil)
@@ -67,6 +66,11 @@ enum WeatherApiQueryEndPoint {
     var endPoint: String {
         switch self {
         case .cityWeatherReport(let city):
+            let urlComponents = URLComponents(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=1f1edc602d96a9f6d32d152a8bc67a51")
+            if let urlString = urlComponents?.string {
+                print("URL String = ", urlString)
+                return urlString
+            }
             return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=1f1edc602d96a9f6d32d152a8bc67a51"
         }
     }
