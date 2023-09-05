@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherReporter: Codable {
+struct WeatherReporterResponseModel: Codable {
     var coordinates: CityCoordinates
     var weather: [WeatherReport]
     var temperatureInfo: WeatherTemperatureDetails
