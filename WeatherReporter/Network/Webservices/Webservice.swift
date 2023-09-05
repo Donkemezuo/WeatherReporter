@@ -39,7 +39,6 @@ final class WebserviceApiClient {
     
     static func fetchRemoteData(from endPoint: String, completionHandler: @escaping(QueryError?, Data?) -> ()) {
         guard let endPointURL = URL(string: endPoint) else { return }
-        print("endPointURL = ", endPoint)
         let urlRequest = URLRequest(url: endPointURL)
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (responseData, response, error) in
             if let error = error {
@@ -66,11 +65,6 @@ enum WeatherApiQueryEndPoint {
     var endPoint: String {
         switch self {
         case .cityWeatherReport(let city):
-            let urlComponents = URLComponents(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=1f1edc602d96a9f6d32d152a8bc67a51")
-            if let urlString = urlComponents?.string {
-                print("URL String = ", urlString)
-                return urlString
-            }
             return "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=1f1edc602d96a9f6d32d152a8bc67a51"
         }
     }
