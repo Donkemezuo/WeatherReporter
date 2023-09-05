@@ -13,6 +13,7 @@
 		F0BD39112AA7C9430040C442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BD390F2AA7C9430040C442 /* Main.storyboard */; };
 		F0BD39132AA7C9470040C442 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0BD39122AA7C9470040C442 /* Assets.xcassets */; };
 		F0BD39162AA7C9470040C442 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0BD39142AA7C9470040C442 /* LaunchScreen.storyboard */; };
+		F0BD39202AA7D4040040C442 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD391F2AA7D4040040C442 /* WeatherReport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		F0BD39122AA7C9470040C442 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0BD39152AA7C9470040C442 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0BD39172AA7C9470040C442 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0BD391F2AA7D4040040C442 /* WeatherReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,8 @@
 		F0BD39082AA7C9430040C442 /* WeatherReporter */ = {
 			isa = PBXGroup;
 			children = (
+				F0BD391E2AA7D3CC0040C442 /* Views */,
+				F0BD391D2AA7D3C40040C442 /* Models */,
 				F0BD39092AA7C9430040C442 /* AppDelegate.swift */,
 				F0BD390B2AA7C9430040C442 /* SceneDelegate.swift */,
 				F0BD390D2AA7C9430040C442 /* ViewController.swift */,
@@ -65,6 +69,21 @@
 				F0BD39172AA7C9470040C442 /* Info.plist */,
 			);
 			path = WeatherReporter;
+			sourceTree = "<group>";
+		};
+		F0BD391D2AA7D3C40040C442 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0BD391F2AA7D4040040C442 /* WeatherReport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0BD391E2AA7D3CC0040C442 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +159,7 @@
 			files = (
 				F0BD390E2AA7C9430040C442 /* ViewController.swift in Sources */,
 				F0BD390A2AA7C9430040C442 /* AppDelegate.swift in Sources */,
+				F0BD39202AA7D4040040C442 /* WeatherReport.swift in Sources */,
 				F0BD390C2AA7C9430040C442 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
