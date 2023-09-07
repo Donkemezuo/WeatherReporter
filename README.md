@@ -1,2 +1,2 @@
 # WeatherReporter
-A weather report application
+A user-friendly application to check a given city's weather report
