@@ -13,8 +13,6 @@ struct WeatherConditionModel {
     var lowTemperature: String
     var highTemperature: String
     var currentTemperature: String
-    var sunriseTime: String
-    var sunsetTime: String
     var conditionIcon: UIImage?
     var conditionDescription: String
     var humidity: String
@@ -25,8 +23,6 @@ struct WeatherConditionModel {
         lowTemperature: String = "",
          highTemperature: String = "",
          currentTemperature: String = "",
-         sunriseTime: String = "",
-         sunsetTime: String = "",
          conditionIcon: UIImage? = nil,
          conditionDescription: String = "",
          humidity: String = "",
@@ -37,8 +33,6 @@ struct WeatherConditionModel {
         self.lowTemperature = lowTemperature
         self.highTemperature = highTemperature
         self.currentTemperature = currentTemperature
-        self.sunriseTime = sunriseTime
-        self.sunsetTime = sunsetTime
         self.conditionIcon = conditionIcon
         self.conditionDescription = conditionDescription
         self.humidity = humidity

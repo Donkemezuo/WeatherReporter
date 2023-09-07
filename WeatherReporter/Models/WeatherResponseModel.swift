@@ -10,12 +10,10 @@ import Foundation
 struct WeatherResponseModel: Codable {
     var weather: [WeatherReport]
     var temperatureInfo: WeatherTemperatureDetails
-    var additionalInfo: AdditionalInfo
     var cityName: String
     
     private enum CodingKeys: String, CodingKey {
         case temperatureInfo = "main"
-        case additionalInfo = "sys"
         case weather
         case cityName = "name"
     }
@@ -63,9 +61,4 @@ struct WeatherTemperatureDetails: Codable {
         return String(humidity) + "°"
     }
     
-}
-
-struct AdditionalInfo: Codable {
-    var sunrise: Int
-    var sunset: Int
 }

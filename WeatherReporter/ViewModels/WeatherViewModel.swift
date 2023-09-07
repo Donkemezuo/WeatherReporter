@@ -75,7 +75,11 @@ class WeatherViewModel: NSObject {
         apiService.fetchCityWeatherReport(city: cityTosearch) { error, responseModel in
             if let responseModel = responseModel {
                 self.weatherReport = responseModel
-                self.fetchWeatherCondition(city: responseModel.cityName)
+                guard let icon = self.weatherReport?.weather.first?.icon else { return }
+                self.fetchWeatherConditionIcon(icon: icon)
+                
+                // Commenting out the weather conditions call because this call always returns the same icon - Can discuss during review 
+                ///self.fetchWeatherCondition(city: responseModel.cityName)
             } else if let error = error {
                 self.notifyAndUpdateUI(error)
             }
@@ -88,7 +92,8 @@ class WeatherViewModel: NSObject {
         apiService.fetchWeatherCondition(city: city) { error, responseModel in
             if let responseModel = responseModel {
                 self.weatherCondition = responseModel.condition
-                guard let icon = responseModel.condition?.icon else { return }
+                let iconString = self.weatherReport?.weather.first?.icon ?? responseModel.condition?.icon
+                guard let icon = iconString else { return }
                 self.fetchWeatherConditionIcon(icon: icon)
             } else if let error = error {
                 self.notifyAndUpdateUI(error)
@@ -167,7 +172,7 @@ class WeatherViewModel: NSObject {
             weatherConditionDetails.humidity = weatherReport.temperatureInfo.humidityString
         }
         
-        if let weatherCondition = weatherCondition {
+        if let weatherCondition = weatherReport?.weather.first?.description {
             weatherConditionDetails.conditionDescription = weatherCondition.description
         }
         

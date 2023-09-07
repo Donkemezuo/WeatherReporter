@@ -106,15 +106,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDM-1A-hNT">
-                                <rect key="frame" x="20" y="279" width="374" height="150"/>
+                                <rect key="frame" x="20" y="279" width="374" height="130"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="bOv-uf-NmV"/>
+                                    <constraint firstAttribute="height" constant="130" id="bOv-uf-NmV"/>
                                 </constraints>
                                 <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-no-a3k">
-                                <rect key="frame" x="20" y="449" width="374" height="50"/>
+                                <rect key="frame" x="20" y="429" width="374" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TUC-kL-SNe">
                                         <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
@@ -162,6 +162,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5eL-FJ-2bp"/>
                                 </constraints>
@@ -175,7 +176,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DKo-4c-Nac">
+                                        <searchBar contentMode="redraw" placeholder="Search US city" translatesAutoresizingMaskIntoConstraints="NO" id="DKo-4c-Nac">
                                             <rect key="frame" x="0.0" y="50" width="414" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="spU-nq-dxf"/>
