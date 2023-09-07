@@ -29,6 +29,7 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         setupViewModel()
         activityIndicatorView.startAnimating()
+        configureDesign()
     }
     
     private func setupViewModel() {
@@ -64,9 +65,26 @@ class WeatherViewController: UIViewController {
         currentTemperatureLabel.text = weatherConditionDetails.currentTemperature
         weatherDescriptionLabel.text = weatherConditionDetails.conditionDescription
         weatherImageView.image = weatherConditionDetails.conditionIcon
+        feelsLikeLabel.text = weatherConditionDetails.feelsLike
+        humidityLabel.text = weatherConditionDetails.humidity
+    }
+    
+    private func configureDesign() {
+        cityNameLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        lowLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        highLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        highLabel.textAlignment = .right
+        weatherDescriptionLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        weatherDescriptionLabel.textAlignment = .left
+        feelsLikeLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        humidityLabel.font = .systemFont(ofSize: 16, weight: .semibold)
+        currentTemperatureLabel.font = .systemFont(ofSize: 60, weight: .bold)
+        currentTemperatureLabel.textAlignment = .center
+        feelsLikeLabel.textAlignment = .right
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        activityIndicatorView.startAnimating()
         searchContainerView.isHidden.toggle()
     }
     @IBAction func cancelSearchPressed(_ sender: UIButton) {

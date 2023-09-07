@@ -43,8 +43,8 @@ class WeatherViewModel: NSObject {
     
     var searchedCity: String? {
         didSet {
-            print("Searched text = ", searchedCity ?? "")
             guard oldValue != self.searchedCity else { return }
+            self.cityTosearch = self.searchedCity ?? ( self.userCity ?? "New York")
             self.fetchWeatherReport()
             self.saveLastSearchedCity()
         }
@@ -59,7 +59,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
-    private var cityTosearch: String = "New York"
+    private var cityTosearch: String = ""
     
     
     override init() {
@@ -144,7 +144,8 @@ class WeatherViewModel: NSObject {
     }
     
     func fetchLastSearchCity() -> String {
-        return UserDefaults.standard.string(forKey: "locationCity") ?? "New York"
+        let lastSearch = UserDefaults.standard.string(forKey: "locationCity") ?? "New York"
+        return lastSearch
     }
     
     private func updateWeatherConditionDetails() {

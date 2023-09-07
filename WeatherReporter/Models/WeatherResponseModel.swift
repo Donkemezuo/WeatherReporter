@@ -59,7 +59,7 @@ struct WeatherTemperatureDetails: Codable {
     }
     
     var feelsLike: String {
-        return String(feeling)
+        return String(feeling) + "°"
     }
     
     var lowTemp: String {
@@ -75,7 +75,7 @@ struct WeatherTemperatureDetails: Codable {
     }
     
     var humidityString: String {
-        return String(humidity)
+        return String(humidity) + "°"
     }
     
 }

@@ -21,7 +21,6 @@
 		F0BD39242AA7DB310040C442 /* WebserviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39232AA7DB310040C442 /* WebserviceProtocol.swift */; };
 		F0BD39272AA7DBCE0040C442 /* QueryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39262AA7DBCE0040C442 /* QueryError.swift */; };
 		F0BD392A2AA7DC290040C442 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39292AA7DC290040C442 /* Webservice.swift */; };
-		F0BD392C2AA7E1E40040C442 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD392B2AA7E1E40040C442 /* DataManager.swift */; };
 		F0BD392F2AA7E7FD0040C442 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD392E2AA7E7FD0040C442 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 		F0BD39232AA7DB310040C442 /* WebserviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebserviceProtocol.swift; sourceTree = "<group>"; };
 		F0BD39262AA7DBCE0040C442 /* QueryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryError.swift; sourceTree = "<group>"; };
 		F0BD39292AA7DC290040C442 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
-		F0BD392B2AA7E1E40040C442 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F0BD392E2AA7E7FD0040C442 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				F0BD39292AA7DC290040C442 /* Webservice.swift */,
-				F0BD392B2AA7E1E40040C442 /* DataManager.swift */,
 			);
 			path = Webservices;
 			sourceTree = "<group>";
@@ -234,7 +231,6 @@
 			files = (
 				F06372262AA99FF50070E39A /* UIViewController+Extension.swift in Sources */,
 				F0BD390E2AA7C9430040C442 /* WeatherViewController.swift in Sources */,
-				F0BD392C2AA7E1E40040C442 /* DataManager.swift in Sources */,
 				F0BD392A2AA7DC290040C442 /* Webservice.swift in Sources */,
 				F06372282AA9A65C0070E39A /* WeatherConditionModel.swift in Sources */,
 				F0BD39272AA7DBCE0040C442 /* QueryError.swift in Sources */,
