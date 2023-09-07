@@ -16,6 +16,10 @@ class Webservice: WebserviceProtocol {
         self.urlSession = urlSession
     }
     
+    /// A function to fetch a given city weather report
+    /// - Parameters:
+    ///   - city: searched city
+    ///   - completionHandler: The completion handler returns either a QueryError or WeatherResponseModel
     func fetchCityWeatherReport(city: String,
                            completionHandler: @escaping (QueryError?, WeatherResponseModel?) -> ()) {
         let endPoint = WeatherApiQueryEndPoint.cityWeatherReport(city: city).endPoint.replaceSpaceCharacters()
@@ -33,13 +37,16 @@ class Webservice: WebserviceProtocol {
             }
         }
     }
+    /// A function to fetch the weather condition of a given city
+    /// - Parameters:
+    ///   - city: searched city
+    ///   - completionHandler: The completion handler returns either a QueryError or WeatherConditionResponseModel
     func fetchWeatherCondition(city: String, completionHandler: @escaping (QueryError?, WeatherConditionResponseModel?) -> ()) {
         let endPoint = WeatherApiQueryEndPoint.weatherCondition(city: city).endPoint.replaceSpaceCharacters()
         WebserviceApiClient.fetchRemoteData(from: endPoint) { error, data in
             if let error = error {
                 completionHandler(error, nil)
             } else if let data = data {
-                
                 do {
                     let weatherConditionResponse = try JSONDecoder().decode(WeatherConditionResponseModel.self, from: data)
                     completionHandler(nil, weatherConditionResponse)
@@ -50,6 +57,10 @@ class Webservice: WebserviceProtocol {
         }
     }
     
+    /// A function to fetch the icon of a weather condition
+    /// - Parameters:
+    ///   - icon: the icon code
+    ///   - completionHandler: The completion handler returns either a QueryError or UIImage
     func fetchWeatherConditionIcon(icon: String, completionHandler: @escaping (QueryError?, UIImage?) -> ()) {
         let endPoint = WeatherApiQueryEndPoint.weatherConditionIcon(icon: icon).endPoint
         WebserviceApiClient.fetchRemoteData(from: endPoint) { error, data in
@@ -64,8 +75,13 @@ class Webservice: WebserviceProtocol {
 }
 
 
+/// A webservice api client class
 final class WebserviceApiClient {
     
+    /// A function to fetch remote data given an endpoint
+    /// - Parameters:
+    ///   - endPoint: The endpoint to fetch data from
+    ///   - completionHandler: The completion handler returns either a QueryError or Data
     static func fetchRemoteData(from endPoint: String, completionHandler: @escaping(QueryError?, Data?) -> ()) {
         guard let endPointURL = URL(string: endPoint) else { return }
         let urlRequest = URLRequest(url: endPointURL)

@@ -57,6 +57,7 @@ class WeatherViewController: UIViewController {
     }
     
     
+    /// A function to update UI properties
     private func updateProperties() {
         let weatherConditionDetails = viewModel.weatherConditionDetails
         cityNameLabel.text = weatherConditionDetails.cityName
@@ -69,6 +70,7 @@ class WeatherViewController: UIViewController {
         humidityLabel.text = weatherConditionDetails.humidity
     }
     
+    /// A function to configure UI design
     private func configureDesign() {
         cityNameLabel.font = .systemFont(ofSize: 30, weight: .bold)
         lowLabel.font = .systemFont(ofSize: 16, weight: .semibold)

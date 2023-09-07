@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// A webservice protocol
 protocol WebserviceProtocol: AnyObject {
     func fetchCityWeatherReport(city: String, completionHandler: @escaping(QueryError?, WeatherResponseModel?) -> ())
     func fetchWeatherCondition(city: String, completionHandler: @escaping(QueryError?, WeatherConditionResponseModel?) -> ())

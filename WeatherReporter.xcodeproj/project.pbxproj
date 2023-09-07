@@ -88,7 +88,6 @@
 				F0BD391D2AA7D3C40040C442 /* Models */,
 				F0BD39092AA7C9430040C442 /* AppDelegate.swift */,
 				F0BD390B2AA7C9430040C442 /* SceneDelegate.swift */,
-				F0BD390D2AA7C9430040C442 /* WeatherViewController.swift */,
 				F0BD390F2AA7C9430040C442 /* Main.storyboard */,
 				F0BD39122AA7C9470040C442 /* Assets.xcassets */,
 				F0BD39142AA7C9470040C442 /* LaunchScreen.storyboard */,
@@ -110,6 +109,7 @@
 		F0BD391E2AA7D3CC0040C442 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0BD390D2AA7C9430040C442 /* WeatherViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

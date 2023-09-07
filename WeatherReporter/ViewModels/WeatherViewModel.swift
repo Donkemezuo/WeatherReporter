@@ -9,8 +9,8 @@ import Foundation
 import CoreLocation
 import UIKit
 
+/// A view Model class that handles the business logic of weather view controller
 class WeatherViewModel: NSObject {
-    
     private var apiService: Webservice!
     private var locationManager: CLLocationManager!
     
@@ -53,14 +53,13 @@ class WeatherViewModel: NSObject {
     private var userCity: String? {
         didSet {
             guard oldValue != self.userCity else { return }
-            self.cityTosearch = self.userCity ?? "New York"
+            self.cityTosearch = self.searchedCity ?? ( self.userCity ?? "New York")
             self.fetchWeatherReport()
             self.saveLastSearchedCity()
         }
     }
     
     private var cityTosearch: String = ""
-    
     
     override init() {
         super.init()
@@ -71,6 +70,7 @@ class WeatherViewModel: NSObject {
         fetchWeatherReport()
     }
     
+    /// A function that fetches the weather report of the searched city
     private func fetchWeatherReport() {
         apiService.fetchCityWeatherReport(city: cityTosearch) { error, responseModel in
             if let responseModel = responseModel {
@@ -82,6 +82,8 @@ class WeatherViewModel: NSObject {
         }
     }
     
+    /// A function to fetch the weather condition details of a given city
+    /// - Parameter city: The city whose weather condition we are fetching
     private func fetchWeatherCondition(city: String) {
         apiService.fetchWeatherCondition(city: city) { error, responseModel in
             if let responseModel = responseModel {
@@ -94,6 +96,8 @@ class WeatherViewModel: NSObject {
         }
     }
     
+    /// A function to fetch the icon of a weather condition
+    /// - Parameter icon: the icon string from the weather condition object
     private func fetchWeatherConditionIcon(icon: String) {
         apiService.fetchWeatherConditionIcon(icon: icon) { error, image in
             if let error = error {
@@ -104,6 +108,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
+    /// A function to setup location services
     private func setupLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -122,6 +127,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
+    /// A function that performs revserse geocoding from user location to retrieve the name of the city
     private func getCityNameFromUserLocation() {
         guard let location = locationManager.location else { return }
         CLGeocoder().reverseGeocodeLocation(location) { [weak self] placemarks, error in
@@ -133,21 +139,23 @@ class WeatherViewModel: NSObject {
         }
     }
     
+    /// A function to save the last searched location in user default
     func saveLastSearchedCity() {
-        var city = "New York"
-        if let searchedCity = searchedCity {
-            city = searchedCity
-        } else if let userCity = userCity {
-            city = userCity
-        }
-        UserDefaults.standard.set(city, forKey: "locationCity")
+        UserDefaults.standard.set(cityTosearch, forKey: "locationCity")
     }
     
+    /// A function that retrieves the last searched location from user default
+    /// - Returns: The last searched location and if there is no previous search, returns 'New York' as the default search
     func fetchLastSearchCity() -> String {
-        let lastSearch = UserDefaults.standard.string(forKey: "locationCity") ?? "New York"
-        return lastSearch
+        let lastSearch = UserDefaults.standard.string(forKey: "locationCity")
+        if let lastSearch = lastSearch {
+            searchedCity = lastSearch
+            return lastSearch
+        }
+        return  "New York"
     }
     
+    /// A function that updates the weather condition detail object properties
     private func updateWeatherConditionDetails() {
         
         if let weatherReport = weatherReport {
