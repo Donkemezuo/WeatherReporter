@@ -13,6 +13,7 @@ struct WeatherReporterResponseModel: Codable {
     var temperatureInfo: WeatherTemperatureDetails
     var windInfo: WindInfo
     var additionalInfo: AdditionalInfo
+    var cityName: String
     
     private enum CodingKeys: String, CodingKey {
         case coordinates = "coord"
@@ -20,6 +21,7 @@ struct WeatherReporterResponseModel: Codable {
         case windInfo = "wind"
         case additionalInfo = "sys"
         case weather
+        case cityName = "name"
     }
 }
 
@@ -70,4 +72,18 @@ struct WindInfo: Codable {
 struct AdditionalInfo: Codable {
     var sunrise: Int
     var sunset: Int
+}
+
+extension WeatherReporterResponseModel {
+    var lowTemp: String {
+        return String(temperatureInfo.minimum) + "°"
+    }
+    
+    var highTemp: String {
+        return String(temperatureInfo.maximum) + "°"
+    }
+    
+    var currentTemp: String {
+        return String(temperatureInfo.temperature) + "°"
+    }
 }

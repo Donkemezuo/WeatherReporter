@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol WebserviceProtocol: AnyObject {
-    func cityWeatherReport(city: String, completionHandler: @escaping(QueryError?, WeatherReporterResponseModel?) -> ())
+    func fetchCityWeatherReport(city: String, completionHandler: @escaping(QueryError?, WeatherReporterResponseModel?) -> ())
+    func fetchWeatherCondition(city: String, completionHandler: @escaping(QueryError?, WeatherConditionResponseModel?) -> ())
+    func fetchWeatherConditionIcon(icon: String, completionHandler: @escaping(QueryError?, UIImage?) -> ())
 }

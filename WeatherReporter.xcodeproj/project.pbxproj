@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F0713EEC2AA84EC500431FA0 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0713EEB2AA84EC500431FA0 /* WeatherViewModel.swift */; };
+		F099CE232AA94CC3008E915F /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F099CE222AA94CC3008E915F /* WeatherCondition.swift */; };
 		F0BD390A2AA7C9430040C442 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD39092AA7C9430040C442 /* AppDelegate.swift */; };
 		F0BD390C2AA7C9430040C442 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD390B2AA7C9430040C442 /* SceneDelegate.swift */; };
 		F0BD390E2AA7C9430040C442 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BD390D2AA7C9430040C442 /* WeatherViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		F0713EEB2AA84EC500431FA0 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		F099CE222AA94CC3008E915F /* WeatherCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 		F0BD39062AA7C9430040C442 /* WeatherReporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherReporter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0BD39092AA7C9430040C442 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0BD390B2AA7C9430040C442 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				F0BD391F2AA7D4040040C442 /* WeatherReporterResponseModel.swift */,
+				F099CE222AA94CC3008E915F /* WeatherCondition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				F0BD39202AA7D4040040C442 /* WeatherReporterResponseModel.swift in Sources */,
 				F0BD39242AA7DB310040C442 /* WebserviceProtocol.swift in Sources */,
 				F0BD390C2AA7C9430040C442 /* SceneDelegate.swift in Sources */,
+				F099CE232AA94CC3008E915F /* WeatherCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
