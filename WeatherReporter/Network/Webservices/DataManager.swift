@@ -10,7 +10,7 @@ import Foundation
 class DataManager {
     private let webservice = Webservice()
     
-    func fetchCityWeatherReport(city: String, completionHandler: @escaping(QueryError?, WeatherReporterResponseModel?) -> ()) {
+    func fetchCityWeatherReport(city: String, completionHandler: @escaping(QueryError?, WeatherResponseModel?) -> ()) {
         webservice.fetchCityWeatherReport(city: city) { error, responseModel in
             completionHandler(error, responseModel)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeatherReporterResponseModel: Codable {
+struct WeatherResponseModel: Codable {
     var coordinates: CityCoordinates
     var weather: [WeatherReport]
     var temperatureInfo: WeatherTemperatureDetails
@@ -42,12 +42,12 @@ struct WeatherReport: Codable {
 }
 
 struct WeatherTemperatureDetails: Codable {
-    var temperature: Double
-    var feeling: Double
-    var maximum: Double
-    var minimum: Double
-    var pressure: Int
-    var humidity: Int
+    private var temperature: Double
+    private var feeling: Double
+    private var maximum: Double
+    private var minimum: Double
+    private var pressure: Int
+    private var humidity: Int
     
     private enum CodingKeys: String, CodingKey {
         case temperature = "temp"
@@ -57,6 +57,27 @@ struct WeatherTemperatureDetails: Codable {
         case pressure
         case humidity
     }
+    
+    var feelsLike: String {
+        return String(feeling)
+    }
+    
+    var lowTemp: String {
+        return String(minimum) + "°"
+    }
+    
+    var highTemp: String {
+        return String(maximum) + "°"
+    }
+    
+    var currentTemp: String {
+        return String(temperature) + "°"
+    }
+    
+    var humidityString: String {
+        return String(humidity)
+    }
+    
 }
 
 struct WindInfo: Codable {
@@ -72,18 +93,4 @@ struct WindInfo: Codable {
 struct AdditionalInfo: Codable {
     var sunrise: Int
     var sunset: Int
-}
-
-extension WeatherReporterResponseModel {
-    var lowTemp: String {
-        return String(temperatureInfo.minimum) + "°"
-    }
-    
-    var highTemp: String {
-        return String(temperatureInfo.maximum) + "°"
-    }
-    
-    var currentTemp: String {
-        return String(temperatureInfo.temperature) + "°"
-    }
 }

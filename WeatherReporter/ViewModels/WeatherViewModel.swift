@@ -14,17 +14,32 @@ class WeatherViewModel: NSObject {
     private var apiService: Webservice!
     private var locationManager: CLLocationManager!
     
-    
-     var weatherReport: WeatherReporterResponseModel? {
+    var weatherConditionDetails = WeatherConditionModel() {
         didSet {
-            print("Update UI")
-            self.notifyAndUpdateUI()
+            self.notifyAndUpdateUI(nil)
         }
     }
     
-    var weatherCondition: WeatherCondition?
-    var weatherConditionImage: UIImage?
-    var notifyAndUpdateUI: (() -> ()) = {}
+    
+     private var weatherReport: WeatherResponseModel? {
+        didSet {
+            self.updateWeatherConditionDetails()
+        }
+    }
+    
+   private var weatherCondition: WeatherCondition? {
+        didSet {
+            self.updateWeatherConditionDetails()
+        }
+    }
+    
+    private var weatherConditionImage: UIImage? {
+        didSet {
+            self.updateWeatherConditionDetails()
+        }
+    }
+    
+    var notifyAndUpdateUI: ((QueryError?) -> ()) = {_ in }
     
     var searchedCity: String? {
         didSet {
@@ -35,7 +50,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
-    var userCity: String? {
+    private var userCity: String? {
         didSet {
             guard oldValue != self.userCity else { return }
             self.cityTosearch = self.userCity ?? "New York"
@@ -44,7 +59,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
-    var cityTosearch: String = ""
+    private var cityTosearch: String = "New York"
     
     
     override init() {
@@ -59,31 +74,32 @@ class WeatherViewModel: NSObject {
     private func fetchWeatherReport() {
         apiService.fetchCityWeatherReport(city: cityTosearch) { error, responseModel in
             if let responseModel = responseModel {
-                self.fetchWeatherCondition(weatherReport: responseModel)
+                self.weatherReport = responseModel
+                self.fetchWeatherCondition(city: responseModel.cityName)
             } else if let error = error {
-                dump(error)
+                self.notifyAndUpdateUI(error)
             }
         }
     }
     
-    private func fetchWeatherCondition(weatherReport: WeatherReporterResponseModel) {
-        apiService.fetchWeatherCondition(city: weatherReport.cityName) { error, responseModel in
+    private func fetchWeatherCondition(city: String) {
+        apiService.fetchWeatherCondition(city: city) { error, responseModel in
             if let responseModel = responseModel {
-                self.weatherReport = weatherReport
-                self.fetchWeatherConditionIcon(weatherCondition: responseModel)
+                self.weatherCondition = responseModel.condition
+                guard let icon = responseModel.condition?.icon else { return }
+                self.fetchWeatherConditionIcon(icon: icon)
             } else if let error = error {
-                dump(error)
+                self.notifyAndUpdateUI(error)
             }
         }
     }
     
-    private func fetchWeatherConditionIcon(weatherCondition: WeatherConditionResponseModel) {
-        apiService.fetchWeatherConditionIcon(icon: weatherCondition.condition?.icon ?? "") { error, image in
+    private func fetchWeatherConditionIcon(icon: String) {
+        apiService.fetchWeatherConditionIcon(icon: icon) { error, image in
             if let error = error {
-                dump(error)
+                self.notifyAndUpdateUI(error)
             } else if let image = image {
                 self.weatherConditionImage = image
-                self.weatherCondition = weatherCondition.condition
             }
         }
     }
@@ -129,6 +145,27 @@ class WeatherViewModel: NSObject {
     
     func fetchLastSearchCity() -> String {
         return UserDefaults.standard.string(forKey: "locationCity") ?? "New York"
+    }
+    
+    private func updateWeatherConditionDetails() {
+        
+        if let weatherReport = weatherReport {
+            weatherConditionDetails.cityName = weatherReport.cityName
+            weatherConditionDetails.feelsLike = weatherReport.temperatureInfo.feelsLike
+            weatherConditionDetails.currentTemperature = weatherReport.temperatureInfo.currentTemp
+            weatherConditionDetails.highTemperature = weatherReport.temperatureInfo.highTemp
+            weatherConditionDetails.lowTemperature = weatherReport.temperatureInfo.lowTemp
+            weatherConditionDetails.humidity = weatherReport.temperatureInfo.humidityString
+        }
+        
+        if let weatherCondition = weatherCondition {
+            weatherConditionDetails.conditionDescription = weatherCondition.description
+        }
+        
+        if let weatherConditionImage = weatherConditionImage {
+            weatherConditionDetails.conditionIcon = weatherConditionImage
+        }
+        
     }
     
 }

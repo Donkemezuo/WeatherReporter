@@ -20,17 +20,26 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var citySearchBar: UISearchBar!
     @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    
     private var viewModel:  WeatherViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewModel()
+        activityIndicatorView.startAnimating()
     }
     
     private func setupViewModel() {
         viewModel = WeatherViewModel()
-        viewModel.notifyAndUpdateUI = { [weak self] in
-            self?.updateUI()
+        viewModel.notifyAndUpdateUI = { [weak self ] error in
+            self?.removeActivityIndicator()
+            if let error = error {
+                self?.showAlert(title: "Unexpected error encountered", message: error.errorMessage)
+            } else {
+                self?.updateUI()
+            }
         }
     }
     
@@ -40,17 +49,21 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    private func removeActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+        }
+    }
+    
     
     private func updateProperties() {
-        guard let responseModel = viewModel.weatherReport else { return }
-        guard let weatherCondition = viewModel.weatherCondition else { return  }
-        
-        cityNameLabel.text = responseModel.cityName
-        lowLabel.text = responseModel.lowTemp
-        highLabel.text = responseModel.highTemp
-        currentTemperatureLabel.text = responseModel.currentTemp
-        weatherDescriptionLabel.text = weatherCondition.description
-        weatherImageView.image = viewModel.weatherConditionImage
+        let weatherConditionDetails = viewModel.weatherConditionDetails
+        cityNameLabel.text = weatherConditionDetails.cityName
+        lowLabel.text = weatherConditionDetails.lowTemperature
+        highLabel.text = weatherConditionDetails.highTemperature
+        currentTemperatureLabel.text = weatherConditionDetails.currentTemperature
+        weatherDescriptionLabel.text = weatherConditionDetails.conditionDescription
+        weatherImageView.image = weatherConditionDetails.conditionIcon
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {

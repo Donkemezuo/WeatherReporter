@@ -17,7 +17,7 @@ class Webservice: WebserviceProtocol {
     }
     
     func fetchCityWeatherReport(city: String,
-                           completionHandler: @escaping (QueryError?, WeatherReporterResponseModel?) -> ()) {
+                           completionHandler: @escaping (QueryError?, WeatherResponseModel?) -> ()) {
         let endPoint = WeatherApiQueryEndPoint.cityWeatherReport(city: city).endPoint.replaceSpaceCharacters()
         WebserviceApiClient.fetchRemoteData(from: endPoint) { error, data in
             if let error = error {
@@ -25,7 +25,7 @@ class Webservice: WebserviceProtocol {
             } else if let data = data {
                 
                 do {
-                    let cityWeatherInfoResponse = try JSONDecoder().decode(WeatherReporterResponseModel.self, from: data)
+                    let cityWeatherInfoResponse = try JSONDecoder().decode(WeatherResponseModel.self, from: data)
                     completionHandler(nil, cityWeatherInfoResponse)
                 } catch {
                     completionHandler(.jsonParse, nil)
@@ -56,12 +56,8 @@ class Webservice: WebserviceProtocol {
             if let error = error {
                 completionHandler(error, nil)
             } else if let data = data {
-                do {
-                    let iconImage = UIImage(data: data)
-                    completionHandler(nil, iconImage)
-                } catch {
-                    completionHandler(.jsonParse, nil)
-                }
+                let iconImage = UIImage(data: data)
+                completionHandler(nil, iconImage)
             }
         }
     }

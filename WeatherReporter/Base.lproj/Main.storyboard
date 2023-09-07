@@ -25,10 +25,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqg-jn-vb9">
-                                <rect key="frame" x="364" y="66.5" width="30" height="30"/>
+                                <rect key="frame" x="348.5" y="66.5" width="45.5" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="bhl-aZ-GSr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="bhl-aZ-GSr"/>
                                     <constraint firstAttribute="height" constant="30" id="n0z-u2-Hzl"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +77,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="High">
                                                         <attributes>
-                                                            <font key="NSFont" size="14" name=".SFNS-Regular"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -129,7 +129,7 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Humidity">
                                                         <attributes>
-                                                            <font key="NSFont" size="14" name=".SFNS-Regular"/>
+                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -165,6 +165,9 @@
                                     <constraint firstAttribute="height" constant="50" id="5eL-FJ-2bp"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5GW-DB-0hi">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </activityIndicatorView>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Euh-5I-7sn">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xHJ-aJ-2F1">
@@ -234,7 +237,7 @@
                                         <constraint firstItem="DKo-4c-Nac" firstAttribute="leading" secondItem="xHJ-aJ-2F1" secondAttribute="leading" id="zHK-DU-0i7"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="regular"/>
+                                <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -247,19 +250,24 @@
                             <constraint firstItem="kkj-N5-vd7" firstAttribute="leading" secondItem="Zsb-Hb-qM2" secondAttribute="trailing" constant="20" id="6mv-RI-tfV"/>
                             <constraint firstItem="all-Nt-ubx" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="8gR-Tx-sjc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kkj-N5-vd7" secondAttribute="trailing" constant="10" id="A38-Ym-lJL"/>
+                            <constraint firstItem="fqg-jn-vb9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="all-Nt-ubx" secondAttribute="trailing" constant="8" symbolic="YES" id="Btq-XM-ekC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mDM-1A-hNT" secondAttribute="trailing" constant="20" id="CDZ-25-Qvc"/>
                             <constraint firstItem="mDM-1A-hNT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Cwm-wM-4wI"/>
                             <constraint firstItem="Zsb-Hb-qM2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HBi-Oi-F6j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fqg-jn-vb9" secondAttribute="trailing" constant="20" id="KfM-p6-rGN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Xe-gg-bcX" secondAttribute="trailing" constant="20" id="Lc6-y4-SoB"/>
                             <constraint firstItem="8Xe-gg-bcX" firstAttribute="top" secondItem="all-Nt-ubx" secondAttribute="bottom" constant="20" id="LhP-eq-JOR"/>
+                            <constraint firstItem="5GW-DB-0hi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Nt8-pz-jeE"/>
                             <constraint firstItem="all-Nt-ubx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Od7-GV-rpJ"/>
                             <constraint firstItem="pN2-no-a3k" firstAttribute="top" secondItem="mDM-1A-hNT" secondAttribute="bottom" constant="20" id="YE8-ea-Npi"/>
                             <constraint firstItem="pN2-no-a3k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ydk-Yk-V3n"/>
+                            <constraint firstItem="5GW-DB-0hi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aiH-Uf-gQs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5GW-DB-0hi" secondAttribute="bottom" id="cJU-5R-8Sx"/>
                             <constraint firstItem="Euh-5I-7sn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="g6Q-Se-teQ"/>
                             <constraint firstItem="mDM-1A-hNT" firstAttribute="top" secondItem="kkj-N5-vd7" secondAttribute="bottom" constant="20" id="hd6-4d-1Sy"/>
                             <constraint firstItem="8Xe-gg-bcX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="juq-O8-UZV"/>
                             <constraint firstItem="kkj-N5-vd7" firstAttribute="bottom" secondItem="Zsb-Hb-qM2" secondAttribute="bottom" id="mew-nx-rLx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5GW-DB-0hi" secondAttribute="trailing" id="obc-FA-yaK"/>
                             <constraint firstItem="fqg-jn-vb9" firstAttribute="centerY" secondItem="all-Nt-ubx" secondAttribute="centerY" id="rrP-aD-x1P"/>
                             <constraint firstItem="kkj-N5-vd7" firstAttribute="top" secondItem="Zsb-Hb-qM2" secondAttribute="top" id="v0n-RU-ZFM"/>
                             <constraint firstItem="Euh-5I-7sn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wRI-bq-sUn"/>
@@ -267,6 +275,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="5GW-DB-0hi" id="9eE-16-Jb3"/>
                         <outlet property="cityNameLabel" destination="all-Nt-ubx" id="b9Q-Ur-aSA"/>
                         <outlet property="citySearchBar" destination="DKo-4c-Nac" id="g35-YR-sVJ"/>
                         <outlet property="currentTemperatureLabel" destination="mDM-1A-hNT" id="bxt-Bc-Y98"/>
